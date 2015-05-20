@@ -1,0 +1,43 @@
+/* ....Show License.... */
+.chart {
+    /*-fx-background-image: url("saber.jpg");*/
+    -fx-background-color: black;
+    -fx-padding: 15 25 15 15;
+}
+.chart-title{
+	-fx-font-size: 30;
+}
+.chart-plot-background {
+    -fx-background-color: transparent;
+    /*-fx-background-image: url("../../../shared-resources/Curve-fitted-chart-background.png"), url("../../../shared-resources/Curve-fitted-graph-gridlines.png");*/
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 0% 0%, 0% 100%;
+    -fx-border-color: white white transparent transparent;
+}
+.chart-area-symbol {
+    -fx-background-color: transparent;
+}
+.chart-series-area-line { 
+    -fx-stroke: white; 
+    -fx-stroke-width: 0.5px; 
+}
+.chart-series-area-fill { 
+    /*-fx-fill: linear-gradient(to right, blue, rgba(255,255,255,0)); */
+    -fx-fill: transparent;
+    -fx-blend-mode: OVERLAY;
+}
+.axis {
+    -fx-tick-mark-visible: true;
+    -fx-minor-tick-visible: true;
+    -fx-tick-length: 3;
+    -fx-minor-tick-length: 0;
+    -fx-border-color: transparent;
+    -fx-tick-label-fill: white;
+}
+.axis:bottom {
+    -fx-border-color: white transparent transparent transparent;
+}
+.axis:left {
+    -fx-border-color: transparent white transparent transparent;
+}

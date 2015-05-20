@@ -11,18 +11,14 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.application.Application;
-import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.effect.BlendMode;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.LinearGradient;
@@ -30,7 +26,6 @@ import javafx.scene.paint.Stop;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeType;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
  
@@ -47,6 +42,7 @@ public class Main extends Application {
     public static Scene_Introduction scene_Introduction;
     public static Scene_Choose scene_Choose;
     public static Scene_Finish scene_Finish;
+    public static String backGroundCSS;
     
     public Parent createContent() {
         Pane layer1 = new Pane();
@@ -98,7 +94,7 @@ public class Main extends Application {
  
         Pane pane = new Pane();
         BorderPane bp = new BorderPane();
-        bp.setPrefSize(WIDTH, HEIGHT-22);
+        bp.setPrefSize(WIDTH, HEIGHT);
         ButtonNext btn = new ButtonNext("Press Here To Get Start", mainStage, scene_Introduction);
         btn.setStyle("-fx-font-size: 30;-fx-background-color: transparent");
         bp.setCenter(btn);
@@ -157,6 +153,7 @@ public class Main extends Application {
     }
     @Override
     public void start(Stage primaryStage) throws Exception {
+    	backGroundCSS = this.getClass().getResource("application.css").toExternalForm();
     	mainStage = primaryStage;
     	createAllScenes();
         primaryStage.setResizable(false);
