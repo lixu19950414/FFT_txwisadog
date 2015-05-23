@@ -5,6 +5,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -23,15 +24,22 @@ public class Scene_Introduction extends Scene {
 	}
 	public static void initElements(){
     	Scene_Introduction.backGround = new BorderPane();
-    	Scene_Introduction.lbl = new Label("THis is intruduction.决定离开房间阿斯顿离\n开房间啊；懒得放假啊；LSD代发地方d");
+    	Scene_Introduction.lbl = new Label("A fast Fourier transform (FFT) is an algorithm to compute the\n"
+    			+ 							"discrete Fourier transform (DFT) and its inverse. Fourier a-\n"
+    			+ 							"nalysis converts time (or space) to frequency (or wavenumber)\n"
+    			+ 							"and vice versa; an FFT rapidly computes such transformations\n"
+    			+ 							"by factorizing the DFT matrix into a product of sparse factors.");
     	Scene_Introduction.buttons = new HBox(3);
     	Scene_Introduction.speedText = new VBox(20);
     	Scene_Introduction.showSpeed = new Button("Performance");
     	Scene_Introduction.showSpeed.setOnAction((ActionEvent e)->{
     		Stage stage = new Stage();
     		BorderPane bp = new BorderPane();
+    		bp.setCenter(new BarChartApp().createContent());
     		Scene scene = new Scene(bp);
     		stage.centerOnScreen();
+    		stage.setResizable(false);
+    		stage.setTitle("Comparation");
     		stage.setScene(scene);
     		stage.show();
     	});

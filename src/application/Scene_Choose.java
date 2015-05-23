@@ -1,32 +1,87 @@
 package application;
 
+import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 
 public class Scene_Choose extends Scene {
 	public static BorderPane backGround;
 	public static Label lbl;
+	public static Label lbl2;
 	public static HBox buttons;
-	public static ButtonNext btnNext;
+	public static HBox fileChooserHBox;
+	public static VBox allStuff;
+	public static ButtonCalculate btnNext;
 	public static ButtonNext btnPrev;
+	public static TextField tf;
+	public static FileChooser fc;
+	public static Button btn;
+	public static RecorderButton playBack;
+	public static HBox controls;
+	public static RecorderButton recorderButton;
+	
 	public Scene_Choose(){
 		super(backGround, Main.WIDTH, Main.HEIGHT);
 	}
 	public static void initElements(){
 		Scene_Choose.backGround = new BorderPane();
-		Scene_Choose.lbl = new Label("THis is choose.");
+		Scene_Choose.lbl = new Label("Now, you need to choose a file provides us with the sourse data to .");
+		Scene_Choose.lbl2 = new Label("Or you could just record a sound so we can capture your voice feature.");
 		Scene_Choose.buttons = new HBox(3);
+		Scene_Choose.fileChooserHBox = new HBox(10);
+		Scene_Choose.allStuff = new VBox(20);
+		Scene_Choose.tf = new TextField();
+		Scene_Choose.fc = new FileChooser();
+		fc.getExtensionFilters().add(new ExtensionFilter("Text(*.txt)", "*.txt"));
+		Scene_Choose.btn = new Button("Browse");
+
+		
+		
+		//录音按钮的设置
+		Scene_Choose.recorderButton = new RecorderButton();
+		recorderButton.setText("Record");
+		Scene_Choose.playBack = new RecorderButton();
+		playBack.setText("PlayBack");
+		playBack.setDisable(true);
+		Scene_Choose.controls = new HBox(10);
+		Scene_Choose.controls.getChildren().addAll(Scene_Choose.recorderButton);
+		Scene_Choose.controls.setAlignment(Pos.BOTTOM_CENTER);
+		playBack.setPlayBack();
+		
+		Scene_Choose.btn.setOnAction((ActionEvent e)->{
+			Main.choosenFile = fc.showOpenDialog(Main.mainStage);
+			if(Main.choosenFile!=null){
+				btnNext.setDisable(false);
+				tf.setText(Main.choosenFile.getAbsolutePath());
+			}
+			else{
+				btnNext.setDisable(true);
+				tf.setText("");
+			}
+		});
+		Scene_Choose.tf.setPrefSize(500, TextField.USE_COMPUTED_SIZE);
+		tf.setEditable(false);
 		Scene_Choose.buttons.setAlignment(Pos.BOTTOM_RIGHT);
-    	Scene_Choose.backGround.setCenter(Scene_Choose.lbl);
+		Scene_Choose.fileChooserHBox.getChildren().addAll(tf,btn);
+		Scene_Choose.allStuff.getChildren().addAll(lbl,fileChooserHBox,lbl2,controls);
+		Scene_Choose.fileChooserHBox.setAlignment(Pos.BOTTOM_CENTER);
+    	Scene_Choose.backGround.setCenter(Scene_Choose.allStuff);
+		Scene_Choose.allStuff.setAlignment(Pos.CENTER);
     	Main.scene_Choose = new Scene_Choose();
     	Main.scene_Choose.getStylesheets().add(Main.backGroundCSS);
 	}
 	public static void initButtons(){
 		Scene_Choose.btnPrev = new ButtonNext("Prev", Main.mainStage, Main.scene_Introduction);
-		Scene_Choose.btnNext = new ButtonNext("Next", Main.mainStage, Main.scene_Finish);
+		Scene_Choose.btnNext = new ButtonCalculate("Calculate", Main.mainStage, Main.scene_Finish);
+		Scene_Choose.btnNext.setDisable(true);
 		Scene_Choose.buttons.getChildren().addAll(Scene_Choose.btnPrev, Scene_Choose.btnNext);
 		Scene_Choose.backGround.setBottom(Scene_Choose.buttons);
     	

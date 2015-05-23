@@ -3,6 +3,7 @@ package application;
  
 import static java.lang.Math.random;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,7 +44,16 @@ public class Main extends Application {
     public static Scene_Choose scene_Choose;
     public static Scene_Finish scene_Finish;
     public static String backGroundCSS;
-    
+    public static String filePath;
+	public static File choosenFile;
+	public static float[] inRealArray;
+	public static float[] inImagArray;
+    public static float[] outRealArray;
+    public static float[] outImagArray;
+    public static int arraySize;
+	public static int graphDistance;
+	public static int beilv = 3;
+	
     public Parent createContent() {
         Pane layer1 = new Pane();
         for (int i = 0; i < 15; i++) {
@@ -154,7 +164,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
     	backGroundCSS = this.getClass().getResource("application.css").toExternalForm();
+    	filePath = new File("").getCanonicalPath();
     	mainStage = primaryStage;
+    	graphDistance = 2048;
     	createAllScenes();
         primaryStage.setResizable(false);
         welcome_Scene = new Scene(createContent());
