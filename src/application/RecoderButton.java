@@ -41,6 +41,8 @@ final class RecorderButton extends Button {
 				Scene_Choose.btnNext.setDisable(true);
 				Scene_Choose.btnPrev.setDisable(true);
 				Scene_Choose.playBack.setDisable(true);
+				Scene_Choose.btnReset.setDisable(true);
+				Scene_Choose.tf.setDisable(true);
 			}
 			else {
 				Main.inRealArray = this.capture.stopAndReturnData();
@@ -53,6 +55,7 @@ final class RecorderButton extends Button {
 					Scene_Choose.controls.getChildren().addAll(Scene_Choose.playBack);
 				Scene_Choose.playBack.setVisible(true);
 				Scene_Choose.playBack.setDisable(false);
+				Scene_Choose.btnReset.setDisable(false);
 			}
 			this.setText(this.btnName);
 		});

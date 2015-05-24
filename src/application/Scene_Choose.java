@@ -24,6 +24,7 @@ public class Scene_Choose extends Scene {
 	public static TextField tf;
 	public static FileChooser fc;
 	public static Button btn;
+	public static Button btnReset;
 	public static RecorderButton playBack;
 	public static HBox controls;
 	public static RecorderButton recorderButton;
@@ -42,6 +43,7 @@ public class Scene_Choose extends Scene {
 		Scene_Choose.fc = new FileChooser();
 		fc.getExtensionFilters().add(new ExtensionFilter("Text(*.txt)", "*.txt"));
 		Scene_Choose.btn = new Button("Browse");
+		Scene_Choose.btnReset = new Button("Reset");
 
 		
 		
@@ -61,12 +63,30 @@ public class Scene_Choose extends Scene {
 			if(Main.choosenFile!=null){
 				btnNext.setDisable(false);
 				tf.setText(Main.choosenFile.getAbsolutePath());
+				Scene_Choose.recorderButton.setDisable(true);
 			}
 			else{
 				btnNext.setDisable(true);
 				tf.setText("");
 			}
 		});
+		Scene_Choose.btnReset.setOnAction((ActionEvent e)->{
+			Scene_Choose.btn.setDisable(false);
+			Main.filePath = null;
+			Scene_Choose.tf.setText("");
+			Main.inRealArray = null;
+			Main.inImagArray = null;
+			Main.outImagArray = null;
+			Main.outRealArray = null;
+			Scene_Choose.btnNext.setText("Caculate");
+			Scene_Choose.btnNext.setDisable(true);
+			Scene_Choose.btnPrev.setDisable(false);
+			Scene_Choose.controls.getChildren().remove(playBack);
+			Scene_Choose.recorderButton.setDisable(false);
+			Scene_Choose.tf.setDisable(false);
+		});
+		
+		
 		Scene_Choose.tf.setPrefSize(500, TextField.USE_COMPUTED_SIZE);
 		tf.setEditable(false);
 		Scene_Choose.buttons.setAlignment(Pos.BOTTOM_RIGHT);
@@ -82,7 +102,7 @@ public class Scene_Choose extends Scene {
 		Scene_Choose.btnPrev = new ButtonNext("Prev", Main.mainStage, Main.scene_Introduction);
 		Scene_Choose.btnNext = new ButtonCalculate("Calculate", Main.mainStage, Main.scene_Finish);
 		Scene_Choose.btnNext.setDisable(true);
-		Scene_Choose.buttons.getChildren().addAll(Scene_Choose.btnPrev, Scene_Choose.btnNext);
+		Scene_Choose.buttons.getChildren().addAll(Scene_Choose.btnReset,Scene_Choose.btnPrev, Scene_Choose.btnNext);
 		Scene_Choose.backGround.setBottom(Scene_Choose.buttons);
     	
 	}
