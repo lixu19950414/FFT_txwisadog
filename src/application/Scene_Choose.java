@@ -34,8 +34,8 @@ public class Scene_Choose extends Scene {
 	}
 	public static void initElements(){
 		Scene_Choose.backGround = new BorderPane();
-		Scene_Choose.lbl = new Label("Now, you need to choose a file provides us with the sourse data to .");
-		Scene_Choose.lbl2 = new Label("Or you could just record a sound so we can capture your voice feature.");
+		Scene_Choose.lbl = new Label("Now, you need to choose a file providing the sourse data.");
+		Scene_Choose.lbl2 = new Label("Or just click \"Record\" to capture your voice as the input.");
 		Scene_Choose.buttons = new HBox(3);
 		Scene_Choose.fileChooserHBox = new HBox(10);
 		Scene_Choose.allStuff = new VBox(20);
@@ -104,6 +104,5 @@ public class Scene_Choose extends Scene {
 		Scene_Choose.btnNext.setDisable(true);
 		Scene_Choose.buttons.getChildren().addAll(Scene_Choose.btnReset,Scene_Choose.btnPrev, Scene_Choose.btnNext);
 		Scene_Choose.backGround.setBottom(Scene_Choose.buttons);
-    	
 	}
 }
