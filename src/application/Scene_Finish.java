@@ -1,5 +1,7 @@
 package application;
 
+import javax.management.remote.SubjectDelegationPermission;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -61,8 +63,24 @@ public class Scene_Finish extends Scene {
 	                Number old_val, Number new_val) {
 	            		cfaca.chart.setPrefHeight((double)new_val*400);
 	                    System.out.println("old_val = "+old_val+" new_val = "+new_val);
+	                    System.out.println(cfaca.scrollPane.getVvalue());
 	            }
 	        });
+			sliderY.valueChangingProperty().addListener(new ChangeListener<Boolean>() {
+				public void changed(ObservableValue<? extends Boolean> ov, Boolean old_num , Boolean new_num){
+					if(old_num!=new_num){
+						System.out.println("HelloWorld");
+						cfaca.scrollPane.setVvalue(2048);
+					}
+				}
+			});
+			
+            /*cfaca.scrollPane.vvalueProperty().addListener(new ChangeListener<Number>() {
+            	public void changed(ObservableValue<? extends Number> ov,
+    	                Number old_val, Number new_val) {
+    	                    System.out.println("old_val = "+old_val+" new_val = "+new_val);
+    	            }
+			});*/
 			
 			
 			
