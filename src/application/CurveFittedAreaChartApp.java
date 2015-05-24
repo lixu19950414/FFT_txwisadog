@@ -72,7 +72,6 @@ public class CurveFittedAreaChartApp{
 		scrollPane.setHmax(maxY);
 		scrollPane.setHbarPolicy(ScrollBarPolicy.ALWAYS);
 		scrollPane.setPrefSize(Main.arraySize>800?1000:800, 422);
-		scrollPane.setVvalue(2048);
 		scrollPane.setContent(chart);
 		return vb;
 	}
