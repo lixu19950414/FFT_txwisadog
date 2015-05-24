@@ -9,12 +9,11 @@
 .button{
 	-fx-font: 15 "Herculanum";
 	-fx-base: #b6e7c9;
+	-fx-background-radius:5;
 }
 
 .button:hover{
 	-fx-background-radius: 5;
-	-fx-font-style:oblique;
-	/*-fx-border-color: blue;*/
 	-fx-base: #FFDAB9;
 	-fx-border-radius: 5;
 }

@@ -106,7 +106,7 @@ public class Main extends Application {
         BorderPane bp = new BorderPane();
         bp.setPrefSize(WIDTH, HEIGHT);
         ButtonNext btn = new ButtonNext("Press Here To Get Start", mainStage, scene_Introduction);
-        btn.setStyle("-fx-font-size: 30;-fx-background-color: transparent");
+        btn.setStyle("-fx-background-color: transparent; -fx-font: 30 \"Brush Script MT\";");
         bp.setCenter(btn);
         sp.setContent(pane);
         pane.getChildren().addAll( new Rectangle(WIDTH, HEIGHT, Color.BLACK),
