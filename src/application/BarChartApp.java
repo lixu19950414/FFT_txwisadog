@@ -17,16 +17,19 @@ import javafx.scene.chart.NumberAxis;
  */
 class BarChartApp{
      
-    private BarChart chart;
+    @SuppressWarnings("rawtypes")
+	private BarChart chart;
     private CategoryAxis xAxis;
     private NumberAxis yAxis;
  
-    public Parent createContent() {
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+	public Parent createContent() {
         String[] years = {"2^11", "2^12", "2^13", "2^14" , "2^15" , "2^16" , "2^17" , "2^18" , "2^19" , "2^20"};
         xAxis = new CategoryAxis();
         xAxis.setCategories(FXCollections.<String>observableArrayList(years));
         yAxis = new NumberAxis("Average Duration", 0.0d, 0.06d, 0.0030d);
-        ObservableList<BarChart.Series> barChartData = FXCollections.observableArrayList(
+        @SuppressWarnings({ })
+		ObservableList<BarChart.Series> barChartData = FXCollections.observableArrayList(
             new BarChart.Series("Our FFT", FXCollections.observableArrayList(
                new BarChart.Data(years[0], 0.000037d),
                new BarChart.Data(years[1], 0.000129d),
