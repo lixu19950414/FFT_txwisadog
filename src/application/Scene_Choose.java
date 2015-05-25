@@ -5,6 +5,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -28,6 +29,7 @@ public class Scene_Choose extends Scene {
 	public static RecorderButton playBack;
 	public static HBox controls;
 	public static RecorderButton recorderButton;
+	public static ProgressBar progressBar;
 	
 	public Scene_Choose(){
 		super(backGround, Main.WIDTH, Main.HEIGHT);
@@ -78,12 +80,19 @@ public class Scene_Choose extends Scene {
 			Main.inImagArray = null;
 			Main.outImagArray = null;
 			Main.outRealArray = null;
+			Scene_Choose.allStuff.getChildren().remove(Scene_Choose.progressBar);
+			Scene_Choose.progressBar = null;
+			ButtonCalculate.status1 = false;
+			ButtonCalculate.status2 = false;
+			ButtonCalculate.status3 = false;
+			ButtonCalculate.flagFinsh = false;
 			Scene_Choose.btnNext.setText("Caculate");
 			Scene_Choose.btnNext.setDisable(true);
 			Scene_Choose.btnPrev.setDisable(false);
 			Scene_Choose.controls.getChildren().remove(playBack);
 			Scene_Choose.recorderButton.setDisable(false);
 			Scene_Choose.tf.setDisable(false);
+			
 		});
 		
 		
