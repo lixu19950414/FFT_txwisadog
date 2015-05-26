@@ -27,7 +27,10 @@ public class Scene_Introduction extends Scene {
     			+ 							"discrete Fourier transform (DFT) and its inverse. Fourier a-\n"
     			+ 							"nalysis converts time (or space) to frequency (or wavenumber)\n"
     			+ 							"and vice versa; an FFT rapidly computes such transformations\n"
-    			+ 							"by factorizing the DFT matrix into a product of sparse factors.");
+    			+ 							"by factorizing the DFT matrix into a product of sparse factors.\n"
+    			+ 							"\n"
+    			+ 							"Click the \"Performance\" to see the speed comparasion between\n"
+    			+ 							"our project and Mathlab.");
     	Scene_Introduction.buttons = new HBox(3);
     	Scene_Introduction.speedText = new VBox(20);
     	Scene_Introduction.showSpeed = new Button("Performance");
