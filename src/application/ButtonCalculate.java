@@ -8,6 +8,7 @@ import java.io.FileReader;
 
 
 
+
 import org.omg.CORBA.FloatSeqHelper;
 
 import javafx.concurrent.Task;
@@ -37,6 +38,10 @@ public class ButtonCalculate extends Button{
 					public Void call(){
 						int i = 0;
 						status1 = true;
+						Scene_Choose.btnPrev.setDisable(true);
+						Scene_Choose.btnReset.setDisable(true);
+						Scene_Choose.playBack.setDisable(true);
+						Scene_Choose.btnNext.setDisable(true);
 						while (true){
 							try {
 								Thread.sleep(10);
@@ -75,6 +80,17 @@ public class ButtonCalculate extends Button{
 								}
 								if(flagFinsh == true){
 									updateProgress(100, 100);
+									try {
+										Thread.sleep(500);
+									} catch (InterruptedException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+									Scene_Choose.btnPrev.setDisable(false);
+									Scene_Choose.btnReset.setDisable(false);
+									Scene_Choose.playBack.setDisable(false);
+									Scene_Choose.btnNext.setDisable(false);
+									Scene_Choose.progressBar.progressProperty().set(1);
 									break;
 								}
 							}
@@ -84,6 +100,7 @@ public class ButtonCalculate extends Button{
 				};
 				
 				
+				
 				Scene_Choose.progressBar = new ProgressBar(0);
 				Scene_Choose.progressBar.setPrefWidth(400);
 				Scene_Choose.progressBar.progressProperty().bind(task.progressProperty());
@@ -91,7 +108,12 @@ public class ButtonCalculate extends Button{
 				Thread th = new Thread(task);
 				th.setDaemon(true);
 				th.start();
-				    
+				   
+				
+				Scene_Choose.btnPrev.setDisable(true);
+				Scene_Choose.btnReset.setDisable(true);
+				Scene_Choose.playBack.setDisable(true);
+				Scene_Choose.btnNext.setDisable(true);
 				
 				boolean needRead = true;
 				
