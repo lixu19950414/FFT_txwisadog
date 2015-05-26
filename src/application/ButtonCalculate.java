@@ -9,8 +9,6 @@ import java.io.FileReader;
 
 
 
-import org.omg.CORBA.FloatSeqHelper;
-
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
